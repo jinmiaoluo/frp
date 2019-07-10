@@ -1,0 +1,8 @@
+version: '3'
+services:
+  frp:
+    image: "jinmiaoluo/frps"
+    restart: "always"
+    network_mode: "host"
+    volumes:
+    - ../../conf/frps.ini:/etc/frps.ini
