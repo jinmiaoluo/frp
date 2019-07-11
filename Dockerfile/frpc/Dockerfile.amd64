@@ -6,7 +6,7 @@ RUN go mod download
 COPY . .
 RUN make frpc_linux_amd64
 
-FROM golang
+FROM debian:buster-slim
 WORKDIR /
 COPY --from=builder /frp/bin/frpc_linux_amd64 /usr/local/bin/frpc
 COPY --from=builder /frp/conf/frpc.ini /etc/frpc.ini

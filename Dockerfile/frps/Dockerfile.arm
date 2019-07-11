@@ -6,7 +6,7 @@ RUN go mod download
 COPY . .
 RUN make frps_linux_arm
 
-FROM arm32v7/golang:alpine
+FROM arm32v7/alpine
 WORKDIR /
 COPY --from=builder /frp/bin/frps_linux_arm /usr/local/bin/frps
 COPY --from=builder /frp/conf/frps.ini /etc/frps.ini

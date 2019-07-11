@@ -6,7 +6,7 @@ RUN go mod download
 COPY . .
 RUN make frpc_linux_arm
 
-FROM arm32v7/golang:alpine
+FROM arm32v7/alpine
 WORKDIR /
 COPY --from=builder /frp/bin/frpc_linux_arm /usr/local/bin/frpc
 COPY --from=builder /frp/conf/frpc.ini /etc/frpc.ini
