@@ -17,27 +17,11 @@ file:
 fmt:
 	go fmt ./...
 
-frps: frps_linux_arm frps_linux_arm64 frps_linux_amd64
+frps:
+	go build -o bin/frps ./cmd/frps
 
-frps_linux_arm:
-	GOOS=linux GOARCH=arm go build -o bin/frps_linux_arm ./cmd/frps
-
-frps_linux_arm64:
-	GOOS=linux GOARCH=arm64 go build -o bin/frps_linux_arm64 ./cmd/frps
-
-frps_linux_amd64:
-	GOOS=linux GOARCH=amd64 go build -o bin/frps_linux_amd64 ./cmd/frps
-
-frpc: frpc_linux_arm frpc_linux_arm64 frpc_linux_amd64
-
-frpc_linux_arm:
-	GOOS=linux GOARCH=arm go build -o bin/frpc_linux_arm ./cmd/frpc
-
-frpc_linux_arm64:
-	GOOS=linux GOARCH=arm64 go build -o bin/frpc_linux_arm64 ./cmd/frpc
-
-frpc_linux_amd64:
-	GOOS=linux GOARCH=amd64 go build -o bin/frpc_linux_amd64 ./cmd/frpc
+frpc:
+	go build -o bin/frpc ./cmd/frpc
 
 test: gotest
 

@@ -1,5 +1,5 @@
 set -xe
-VERSION=0.27.1.1
+VERSION=0.27.1.2
 cat <<END > frpc-manifest-latest.yaml
 image: jinmiaoluo/frpc:latest
 manifests:
@@ -17,6 +17,11 @@ manifests:
     image: jinmiaoluo/frpc_linux_amd64:${VERSION}
     platform:
       architecture: amd64
+      os: linux
+  -
+    image: jinmiaoluo/frpc_linux_386:${VERSION}
+    platform:
+      architecture: 386
       os: linux
 END
 
@@ -38,6 +43,11 @@ manifests:
     platform:
       architecture: amd64
       os: linux
+  -
+    image: jinmiaoluo/frpc_linux_386:${VERSION}
+    platform:
+      architecture: 386
+      os: linux
 END
 
 cat <<END > frps-manifest-latest.yaml
@@ -58,6 +68,11 @@ manifests:
     platform:
       architecture: amd64
       os: linux
+  -
+    image: jinmiaoluo/frps_linux_386:${VERSION}
+    platform:
+      architecture: 386
+      os: linux
 END
 
 cat <<END > frps-manifest-${VERSION}.yaml
@@ -77,6 +92,11 @@ manifests:
     image: jinmiaoluo/frps_linux_amd64:${VERSION}
     platform:
       architecture: amd64
+      os: linux
+  -
+    image: jinmiaoluo/frps_linux_386:${VERSION}
+    platform:
+      architecture: 386
       os: linux
 END
 

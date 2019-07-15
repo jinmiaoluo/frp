@@ -4,10 +4,10 @@ COPY go.mod .
 COPY go.sum .
 RUN go mod download
 COPY . .
-RUN make frpc_linux_arm64
+RUN make -f Makefile.cross-compiles
 
 FROM arm64v8/alpine
 WORKDIR /
-COPY --from=builder /frp/bin/frpc_linux_arm64 /usr/local/bin/frpc
+COPY --from=builder /frp/frpc_linux_arm64 /usr/local/bin/frpc
 COPY --from=builder /frp/conf/frpc.ini /etc/frpc.ini
 CMD ["frpc", "--config", "/etc/frpc.ini"]

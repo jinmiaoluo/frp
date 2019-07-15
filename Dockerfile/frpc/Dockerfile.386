@@ -6,8 +6,8 @@ RUN go mod download
 COPY . .
 RUN make -f Makefile.cross-compiles
 
-FROM debian:buster-slim
+FROM i386/debian:buster-slim
 WORKDIR /
-COPY --from=builder /frp/frpc_linux_amd64 /usr/local/bin/frpc
+COPY --from=builder /frp/frpc_linux_386 /usr/local/bin/frpc
 COPY --from=builder /frp/conf/frpc.ini /etc/frpc.ini
 CMD ["frpc", "--config", "/etc/frpc.ini"]

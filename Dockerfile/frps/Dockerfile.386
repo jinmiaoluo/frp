@@ -6,9 +6,9 @@ RUN go mod download
 COPY . .
 RUN make -f Makefile.cross-compiles
 
-FROM arm32v7/alpine
+FROM i386/debian:buster-slim
 WORKDIR /
-COPY --from=builder /frp/frps_linux_arm /usr/local/bin/frps
+COPY --from=builder /frp/frps_linux_386 /usr/local/bin/frps
 COPY --from=builder /frp/conf/frps.ini /etc/frps.ini
 EXPOSE 7000 7500
 CMD ["frps", "--config", "/etc/frps.ini"]
